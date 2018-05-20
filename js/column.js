@@ -38,32 +38,32 @@ function Column(id, name) {
       });
     });
 
-    $columnChangeName.click(function(event) {
-      var newNameColumn = prompt("Enter the new name of the column");
-      event.preventDefault();
-      self.changeNameColumn(self.$element);
+    // $columnChangeName.click(function(event) {
+    //   var newNameColumn = prompt("Enter the new name of the column");
+    //   event.preventDefault();
+    //   self.changeNameColumn(self.$element);
 
-      $.ajax({
-        url: baseUrl + '/column/' + self.id,
-        method: 'PUT',
-        data: {
-        name: newNameColumn,
-        data: 'string'
-        bootcamp_kanban_column_id: self.id
-        },
-        success: function(response) {
-            var newName = self.$element.(self.id, newNameColumn);
-            self.changeNameColumn(newName);
-        }
-      });
-    })
+      // $.ajax({
+      //   url: baseUrl + '/column/' + self.id,
+      //   method: 'PUT',
+      //   data: {
+      //   name: newNameColumn,
+      //   data: 'string',
+      //   bootcamp_kanban_column_id: self.id
+      //   },
+      //   success: function(response) {
+      //       var newName = self.$element.(self.id, newNameColumn),
+      //       self.changeNameColumn(newName);
+      //   }
+      // });
+    // })
 
     // construction column of element
     $column.append($columnTitle)
       .append($columnDelete)
       .append($columnAddCard)
       .append($columnCardList)
-      .append($columnChangeName);
+      // .append($columnChangeName);
 
     // retur of created column
     return $column;
@@ -81,7 +81,7 @@ Column.prototype = {
       url: baseUrl + '/column/' + self.id,
       method: 'DELETE',
       success: function(response) {
-        self.$element.remove(); //? dlaczego mam usunąc $??
+        self.$element.remove();
       }
     });
   },
